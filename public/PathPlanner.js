@@ -44,7 +44,7 @@ class RadialSegment {
 
     toJava() {
 
-        if(this.isTurn()) {
+        if (this.isTurn()) {
             return `new RadialSegment.turning(${this.heading.toFixed(2)}, ${this.radius.toFixed(2)}, ${this.left})`;
         } else {
             return `new RadialSegment.straight(${this.heading.toFixed(2)}, ${this.distance.toFixed(2)})`;
@@ -168,6 +168,19 @@ function Planner() {
             radii[selectedPoint] = parseFloat(radiusSlider.value);
             showSelectedPointParams();
             drawAll();
+        }
+    );
+
+    alwaysFilletCheckbox.addEventListener(
+        "change",
+        function () {
+
+            if (alwaysFilletCheckbox.checked) {
+                setAutoRadii();
+                showSelectedPointParams();
+                drawAll();
+            }
+
         }
     );
 
@@ -389,16 +402,29 @@ function Planner() {
 
         if (showGuidelinesCheckBox.checked) {
 
-            ctx.strokeStyle = "rgba(0,0,0,0.15)";
+            ctx.setLineDash([5, 5]);
+
+            ctx.strokeStyle = "rgba(0,0,0,0.2)";
 
             ctx.beginPath();
-            ctx.moveTo(0, screenPoint.j);
+
+            ctx.moveTo(screenPoint.i, screenPoint.j);
+            ctx.lineTo(0, screenPoint.j);
+
+            ctx.moveTo(screenPoint.i, screenPoint.j);
             ctx.lineTo(canvas.width, screenPoint.j);
-            ctx.moveTo(screenPoint.i, 0);
+
+            ctx.moveTo(screenPoint.i, screenPoint.j);
+            ctx.lineTo(screenPoint.i, 0);
+
+            ctx.moveTo(screenPoint.i, screenPoint.j);
             ctx.lineTo(screenPoint.i, canvas.height);
+
             ctx.stroke();
 
         }
+
+        ctx.setLineDash([]);
 
         if (mousePoint == null || (dragging && selectedPoint != -1)) return;
 
@@ -732,7 +758,7 @@ function Planner() {
 
             var headingChange = endAngle - startAngle;
 
-            
+
 
 
 
@@ -754,7 +780,7 @@ function Planner() {
 
             var offsetLength = canvasRadius / Math.sin(theta);
 
-            
+
 
             if (v1.angle(v2) < 0) {
                 offsetLength = -offsetLength;
@@ -1201,15 +1227,7 @@ function Planner() {
         false
     );
 
-    document.getElementById("autoFillet").addEventListener(
-        "click",
-        function () {
-            setAutoRadii();
-            showSelectedPointParams();
-            drawAll();
-        },
-        false
-    );
+
 
     document.getElementById("zeroFillet").addEventListener(
         "click",

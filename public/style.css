@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    color: white;
+    background-color: #1a1a1a;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h3 {
+    border-bottom: 2px solid #555555;
+    margin-bottom: 5px;
+}
+
+div {
+    margin-bottom: 20px;
+    /*border: 1px solid lightgreen;*/
+}
+
+.top-bar {
+    padding: 5px;
+    background-color: #222222;
+    border-bottom: 2px solid #444444;
+}
+
+.top-bar.item {
+    display: inline-block;
+    border-radius: 0;
+}
+
+table, tr, td {
+    /*background-color: aqua;*/
+    border: none;
+    padding: 5px;
+    vertical-align: top;
+}
+
+table {
+    border-radius: 5px;
+    border: 2px solid #444444;
+}
+
+canvas {
+    cursor: none;
+    border: none;
+    display: block;
+}
+
+button, select, label.file {
+    font-size: 0.9em;
+    display: inline-block;
+    margin: 0;
+    font-weight: bold;
+    background: none;
+    border: none;
+    background-color: #333333;
+    color: white;
+    border-radius: 0.5em;
+}
+
+input[type=text], input[type=password], input[type=checkbox], textarea {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0.5em 0.5em;
+    background-color: #333333;
+    color: white;
+    border-radius: 0.5em;
+    resize: none;
+}
+
+input[type=file] {
+    display: none;
+}
+
+button, label.file {
+    padding: 0.5em 1.5em;
+}
+
+select {
+    padding: 0.5em 0.5em;
+}
+
+button:hover, label.file:hover, select:hover {
+    background-color: #444444;
+}
+
+input[type=text].command {
+    display: none;
+}
+
+.fullwidth {
+    display: block;
+    width: 100%;
+}
+
+.space {
+    margin-bottom: 5px;
+}
+
+.line-item {
+    display: inline-block;
+    margin-right: 5px;
+}
